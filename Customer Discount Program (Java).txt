@@ -1,0 +1,109 @@
+package com.company;
+import java.util.*;
+
+
+
+class CustomerData {
+
+    String name;
+
+
+
+    public CustomerData(String name) {
+        this.name = name;
+    }
+
+    public CustomerData() {
+
+    }
+
+    public String toString() {
+        return "Customer name = " + name ;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+}
+
+class PreferredCustomer extends CustomerData{
+    double purchasesAmount;
+    double discountLevel;
+    public PreferredCustomer(String name, double purchasesAmount) {
+        super(name);
+        this.purchasesAmount = purchasesAmount;
+        
+    }
+    
+
+    public double getPurchasesAmount() {
+        return purchasesAmount;
+    }
+
+    public void setPurchasesAmount(double purchasesAmount) {
+        this.purchasesAmount = purchasesAmount;
+    }
+
+    public double getdiscountLevel() {
+        return discountLevel;
+    }
+
+    public void setdiscountLevel(double purchasesAmount) {
+        if(this.purchasesAmount > 2000)
+        {
+            this.discountLevel = 10;
+        }
+        else if(this.purchasesAmount > 1500)
+        {
+            this.discountLevel = 7;
+        }
+        else if(this.purchasesAmount > 1000)
+        {
+            this.discountLevel = 6;
+        }
+        else{
+            this.discountLevel = 5;
+        }
+
+    }
+    
+    //calculate discount amount
+    public double discountAmount()
+    {
+        return (purchasesAmount * discountLevel)/100;
+    }
+
+    public String toString() {
+        return "Customer purchases Amount = " + purchasesAmount+"Customer discount Level = "
+                + discountLevel+" Discount Amount = "+discountAmount();
+    }
+
+}
+
+public class Main{
+
+    public static void main(String[] args) {
+
+        
+        List<PreferredCustomer> listOfCustomers= new ArrayList<PreferredCustomer>();
+        PreferredCustomer customer1 = new PreferredCustomer("Kelly",2200);
+        PreferredCustomer customer2 = new PreferredCustomer("sarah", 700);
+
+        listOfCustomers.add(customer1);
+
+        listOfCustomers.add(customer2);
+
+        System.out.println(" Customer 1 = " + customer1);
+        System.out.println(" Customer 2 = " + customer2);
+        
+
+
+
+    }
+}
